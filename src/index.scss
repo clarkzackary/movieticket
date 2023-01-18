@@ -1,0 +1,267 @@
+.row {
+  display: flex;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+	border: none;
+	background-color: #D6F0FF;
+	width: 100vw;
+	color: #254759
+}
+button {
+	color: white;
+	border: none;
+	background-color: #254759;
+	border-radius: 50px;
+	padding: 2px 10px;
+}
+button a {
+	color: white
+}
+button a:hover {
+	color: white
+}
+h1 {
+	color: #254759;
+	font-family: 'Josefin Sans', sans-serif;
+	font-size: 100px
+}
+.noresults {
+	color: white
+}
+.allsearchempty{
+	font-size: 50px
+}
+h2 {
+	color: #254759;
+	margin-left: 20px;
+}
+.favcard {
+	width: 100vw
+}
+.pagetitle p {
+	margin-left: 20px
+}
+.movieposter {
+  width: 150px;
+	margin-top: 10px;
+}
+.navbutton {
+	height: 100%;
+}
+.navbutton button {
+	height: 100%;
+}
+.searchbutton button {
+	margin-left: 10px;
+}
+.pagebody {
+	background-color: #254759;
+	margin: 0px;
+	width: 100%
+}
+.bodycard {
+	border-radius: 10px;
+	background-color: #DADADC;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	padding: 50px;
+}
+.logo {
+	margin-top: 30px;
+	margin-bottom: 30px;
+	height: 10vw;
+	line-height: 2;
+}
+.moviecard {
+	width: 200px;
+	min-height: 300px;
+	text-align: center;
+	margin-right: 10px
+}
+.searchform {
+	align-self: flex-end;
+}
+
+.allrows {
+  margin-left: 20px;
+}
+
+.card {
+	border: none;
+	align-items: center;
+	height: 100%;
+	border-radius: 10px;
+}
+
+.rowtitle {
+	margin-top: 50px
+}
+.header {
+	width: 100vw;
+	background-color: #63A7CC;
+	margin: 0px
+}
+input {
+	margin-left: 10px
+}
+.headerbuttons {
+	margin-top: 50px;
+}
+.watchlistButton {
+	margin-top: 10px;
+	margin-bottom: 10px
+}
+
+.moviepagefavbutton {
+	margin-top: 10px
+}
+.allResults button {
+	margin-left: 40px;
+	margin-bottom: 10px;
+}
+.scrollmenu {
+	width: 100vw;
+	overflow-x: scroll;
+	flex-wrap: nowrap;
+	background-color: #254759;
+}
+
+.scrollborder {
+	margin: 20px
+}
+
+.scrollmenu::-webkit-scrollbar {
+	height: 8px;
+}
+
+.scrollmenu::-webkit-scrollbar-thumb {
+	background: #63A7CC;
+	border-radius: 4px
+}
+
+.rotate {
+  -ms-transform: rotate(-90deg); /* IE 9 */
+  -webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
+  transform: rotate(-90deg);
+}
+.scrollArrow {
+  font-size: 30px;
+}
+.movierow {
+	flex-wrap: nowrap;
+	margin-left: -10px;
+	margin-right: 100px
+}
+
+.col-lg-11 {
+	padding: 0px;
+	display: flex;
+	align-items: flex-start;
+}
+
+.card:hover {
+	background-color: #DADADC
+}
+a {
+	color: #254759
+}
+a:hover {
+	color: #254759;
+	text-decoration: none
+}
+.textbox {
+	width: 300px
+}
+.bodytext h2 {
+	margin: 0px;
+}
+.recommendbutton {
+	margin-bottom: 10px;
+	position: absolute;
+	bottom: 0;
+}
+.removeButton {
+	margin-top: 10px
+}
+.clearbutton button {
+	margin-left: 30px;
+	margin-bottom: 10px;
+}
+.emptyfavlist {
+	margin-left: 20px;
+	margin-top: 20px;
+	font-size: 30px;
+	height: 50vh
+}
+.cardinner {
+	margin-bottom: 40px
+}
+.movieposter {
+	margin-top: 20px
+}
+.searchtitle {
+	margin-top: 30px;
+}
+.pagetitle {
+	margin-top: 30px;
+}
+.searchtitle h2 {
+	font-size: 50px;
+}
+.footer {
+	height: 100px;
+	text-align: center;
+	align-content: center;
+	align-items: center;
+	line-height: 6;
+
+}
+.alltitle {
+	margin-top: 50px;
+}
+.alltitle {
+	margin-bottom: 30px;
+}
+.allpagenav {
+	margin-bottom: 20px;
+	width: 100vw
+}
+.footer a {
+	font-weight: bold;
+}
+.allcard {
+	margin: 20px
+}
+.fa-plus-circle {
+	margin-top: 80px;
+	font-size: 100px
+}
+.alltitle h3 {
+ font-size: 20px;
+ margin-top: -10px;
+ margin-left: 40px;
+}
+.bodyposter{
+	margin: 20px;
+	width: 300px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+@media (max-width: 1150px) {
+	h1 {
+		font-size: 80px;
+	}
+}
+@media (max-width: 600px) {
+	h1 {
+		font-size: 50px;
+	}
+	.bodyposter {
+		width: 200px;
+	}
+}
