@@ -17,12 +17,15 @@ export default function Movie() {
                   }
                   fetchMovieData()
     }, [id, genre])
+    console.log(movieInfo.similar)
     if (movieInfo.credits) {
 
         return (
             <>
                 {movieInfo.title || movieInfo.name}
-                <FetchResults results={movieInfo.credits.cast} genre="person" />
+                <FetchResults results={movieInfo.credits.cast} genre="person" header="Cast"/>
+                <FetchResults results={movieInfo.similar.results} genre="movie" header="Similar Movies"/>
+             
             </>
         )
     }

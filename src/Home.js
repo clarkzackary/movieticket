@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, Route, Routes } from "react-router-dom";
+import { Link, Route, Routes, useParams } from "react-router-dom";
 import Movie from "./Movie";
 import SearchResults from "./SearchResults";
 
@@ -7,7 +7,8 @@ export default function Home() {
     const [searchTerm, setSearchTerm] = useState("");
     const [movieResults, setMovieResults] = useState({});
     const [tvResults, setTVResults] = useState({});
-
+    const [searchHeader, setSearchHeader] = useState("")
+    const {id} = useParams()
     const handleFormChange = (event) => {
         setSearchTerm(event.target.value);
     }
@@ -68,8 +69,10 @@ export default function Home() {
                 console.log(error);
             })
         )
+        setSearchHeader(searchTerm)
+        setSearchTerm("")
     }
-    useEffect(() => clearSearch(), [])
+    useEffect(() => clearSearch(), [id])
     return (
         <>
             <form className="searchform row">
@@ -93,14 +96,13 @@ export default function Home() {
                 <Link to=""
                     className="searchbutton"
                 >
-                    Clear
+                    Home
                 </Link>
             </form>
             <Routes>
-                <Route path="/" element={<SearchResults movieResults={movieResults} tvResults={tvResults} />} />
+                <Route path="/" element={<SearchResults searchHeader={searchHeader} movieResults={movieResults} tvResults={tvResults} />} />
                 <Route path="/:genre/:id" element={<Movie />} />
             </Routes>
-
         </>
     );
 }

@@ -1,6 +1,6 @@
 import RowCards from "./RowCards";
 
-export default function FetchResults({results, genre}) {
+export default function FetchResults({results, genre, header}) {
     var movieCards = null;
     console.log(results)
     if (results) {
@@ -21,7 +21,7 @@ export default function FetchResults({results, genre}) {
         })
         return (
             <div className="rowtitle">
-                <h2>{genre==="movie" ? "Movies" : "person" ? "Cast" : "TV Shows"}</h2>
+                <h2>{header}</h2>
                 <div className="scrollmenu">
                     <div className="scrollborder">
                     <div className="row movierow">
