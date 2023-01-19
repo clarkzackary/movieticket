@@ -47,7 +47,7 @@ export default function Home() {
     return (
         <>
             <div>
-                <Link to="" className="searchbutton">
+                <Link to="" className="searchbutton homebutton">
                     Home
                 </Link>
                 <input

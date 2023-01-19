@@ -34,13 +34,11 @@ export default function FetchResults({results, parentType, genre, header}) {
         }
         
         return (
-            <div className="rowtitle">
+            <div className="rowwrapper">
                 <h2>{header}</h2>{allSearch}
                 <div className="scrollmenu">
-                    <div className="scrollborder">
-                    <div className="row movierow">
+                    <div className="row">
                         {movieCards}
-                    </div>
                     </div>
                 </div>
             </div>
