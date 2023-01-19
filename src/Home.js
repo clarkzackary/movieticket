@@ -66,13 +66,13 @@ export default function Home() {
                     Search
                 </Link>
             </div>
-            <Routes>
-                <Route path="/" element={<HomeResultsWrapper movieResults={movieResults} tvResults={tvResults} />} />
-                <Route path="/search" element={<HomeResultsWrapper movieResults={movieResults} tvResults={tvResults} />} />
-                <Route path="/search/:searchTerm" element={<SearchResultsWrapper setSearchTerm={setSearchTerm} clearSearch={clearSearch} />} />
-                <Route path="/allresults/:genre/:searchTerm/:pageNum" element={<AllSearchResults />} />
-                <Route path="/:genre/:id" element={<Movie />} />
-            </Routes>
+                <Routes>
+                    <Route path="/" element={<HomeResultsWrapper movieResults={movieResults} tvResults={tvResults} />} />
+                    <Route path="/search" element={<HomeResultsWrapper movieResults={movieResults} tvResults={tvResults} />} />
+                    <Route path="/search/:searchTerm" element={<SearchResultsWrapper setSearchTerm={setSearchTerm} clearSearch={clearSearch} />} />
+                    <Route path="/allresults/:genre/:searchTerm/:pageNum" element={<AllSearchResults />} />
+                    <Route path="/:genre/:id" element={<Movie />} />
+                </Routes>
         </>
     );
 }
