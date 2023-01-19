@@ -67,7 +67,14 @@ h2 {
 	}
 }
 
-
+.emptysearch {
+	display:flex;
+	color: white;
+	justify-content: center;
+	width: 100%;
+	height: 100px;
+	line-height: 100px;
+}
 .movieinfo {
 	background-color: #254759;
 	padding: 30px;

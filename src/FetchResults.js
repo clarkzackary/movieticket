@@ -21,7 +21,7 @@ export default function FetchResults({results, parentType, genre, header}) {
             })
         } else {
             movieCards = (
-                <div>
+                <div className="emptysearch">
                     No {genre==="tv"? "TV" : "movie"} results found for {searchTerm}.
                 </div>
             )
