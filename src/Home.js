@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, Route, Routes, useNavigate } from "react-router-dom";
+import AllSearchResults from "./AllSearchResults";
 import HomeResultsWrapper from "./HomeResultsWrapper";
 import Movie from "./Movie";
 import SearchResultsWrapper from "./SearchResultsWrapper";
@@ -70,6 +71,7 @@ export default function Home() {
             <Routes>
                 <Route path="/" element={<HomeResultsWrapper movieResults={movieResults} tvResults={tvResults} />} />
                 <Route path="/search/:searchTerm" element={<SearchResultsWrapper setSearchTerm={setSearchTerm} clearSearch={clearSearch} />} />
+                <Route path="/allresults/:genre/:searchTerm/:pageNum" element={<AllSearchResults />} />
                 <Route path="/:genre/:id" element={<Movie />} />
             </Routes>
         </>

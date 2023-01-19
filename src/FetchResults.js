@@ -1,7 +1,11 @@
+import { Link, useParams } from "react-router-dom";
 import RowCards from "./RowCards";
 
-export default function FetchResults({results, genre, header}) {
+export default function FetchResults({results, parentType, genre, header}) {
     var movieCards = null;
+    console.log(results)
+    var allSearch = (<></>)
+    const {searchTerm} = useParams()
     if (results) {
         movieCards = results.map(movie => {
             if (movie.poster_path) {
@@ -18,9 +22,16 @@ export default function FetchResults({results, genre, header}) {
                 return null;
             }
         })
+        if (parentType==="search") {
+            allSearch = (
+                <Link to={`/allresults/${genre}/${searchTerm}/1`} className="searchbutton">
+                    See All Results
+                </Link>
+            )
+        }
         return (
             <div className="rowtitle">
-                <h2>{header}</h2>
+                <h2>{header}</h2>{allSearch}
                 <div className="scrollmenu">
                     <div className="scrollborder">
                     <div className="row movierow">
