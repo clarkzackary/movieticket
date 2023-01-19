@@ -2,7 +2,6 @@ import RowCards from "./RowCards";
 
 export default function FetchResults({results, genre, header}) {
     var movieCards = null;
-    console.log(results)
     if (results) {
         movieCards = results.map(movie => {
             if (movie.poster_path) {

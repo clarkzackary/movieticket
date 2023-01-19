@@ -5,6 +5,7 @@ export default function Movie() {
     const [movieInfo, setMovieInfo] = useState({})
     const { id } = useParams()
     const { genre } = useParams()
+    console.log(movieInfo)
     useEffect(() => {
         const fetchMovieData = () => {
                 let fetchurl =
@@ -17,15 +18,41 @@ export default function Movie() {
                   }
                   fetchMovieData()
     }, [id, genre])
-    console.log(movieInfo.similar)
     if (movieInfo.credits) {
-
+        var monthNames = [
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December"
+          ];
+          var date = new Date(movieInfo.release_date || movieInfo.first_air_date);
+          var dd = date.getDate();
+          var mm = date.getMonth();
+          var yy = date.getFullYear();
+          let releaseDateFull = "Release Date: "+monthNames[mm]+" "+dd+", "+yy;
         return (
             <>
-                {movieInfo.title || movieInfo.name}
+                <img
+                    src={`https://image.tmdb.org/t/p/w300${movieInfo.poster_path}`} 
+                    alt={`movieInfo.title`}
+                />
+                <h2>{movieInfo.title || movieInfo.name}</h2>
+                <div>
+                    {releaseDateFull}
+                </div>
+                <div>
+                    {movieInfo.overview}
+                </div>
                 <FetchResults results={movieInfo.credits.cast} genre="person" header="Cast"/>
                 <FetchResults results={movieInfo.similar.results} genre="movie" header="Similar Movies"/>
-             
             </>
         )
     }

@@ -1,11 +1,10 @@
 import FetchResults from "./FetchResults";
 
-export default function SearchResults({searchHeader, movieResults, tvResults}) {
+export default function SearchResults({movieResults, tvResults, parentType}) {
     return (
-        <>  
-            {searchHeader}
-            <FetchResults results={movieResults.results} genre="movie" header="Movies"/>
-            <FetchResults results={tvResults.results} genre="tv" header="TV Shows"/>
+        <> 
+            <FetchResults results={movieResults.results} genre="movie" header={parentType==="home" ? "Top Rated Movies" : "Movies"}/>
+            <FetchResults results={tvResults.results} genre="tv" header={parentType==="home" ? "Top Rated TV Shows" : "TV Shows"}/>
         </>
     )
 }
