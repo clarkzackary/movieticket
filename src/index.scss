@@ -1,3 +1,4 @@
+// Styles applied globally:
 body {
 	margin: 0;
 	padding: 0;
@@ -5,14 +6,28 @@ body {
 	border: none;
 	background-color: #D6F0FF;
 	width: 100vw;
-	color: #254759
+	color: #254759;
 }
 a {
 	color: #254759;
 	text-decoration: none;
 }
+h2 {
+	margin: 20px 0 5px 20px;
+	min-width: 150px;
+}
+.searchbutton {
+	background-color: #254759;
+	border-radius: 20px;
+	color: white;
+	padding:  5px 10px;
+	margin: 20px 0 10px 20px;
+	font-size: 12px;
+
+}
+
+// Styles specific to certain components:
 .card {
-	width: 200px;
 	min-height: 300px;
 	text-align: center;
 	border: none;
@@ -21,59 +36,129 @@ a {
 	background-color: #DADADC;
 	margin: 0 10px;
 	padding: 0 20px;
-
+	max-width: 150px;
 	.movieposter {
 		width: 150px;
 		margin-top: 20px;
 		margin-bottom: 10px;
 	}
 	.cardtitle {
-		margin-bottom: 5px;
+		margin: 0 0 10px 0;
+		width: 150px;
+	}
+	&.cardlink:hover {
+		background-color: white;
 	}
 }
-.cardlink:hover {
-	background-color: white
-}
+
 .header {
 	margin-left: 20px;
-	h1 {
-		font-size: 50px;
-		margin: 5px 0 20px 0;
+	.homebutton {
+		height: 100px;
+		h1 {
+			font-size: 50px;
+			margin: 5px 0 20px 0;
+		}
+	}
+	.textbox {
+		width: 300px;
+		height: 30px;
+		margin-bottom: 20px;
 	}
 }
-.homebutton {
-	height: 100px;
-}
-.rowwrapper {
-	h2 {
-		margin-left: 20px;
-	}
-}
-.scrollmenu {
-	width: 100vw;
-	overflow-x: scroll;
-	flex-wrap: nowrap;
+
+
+.movieinfo {
 	background-color: #254759;
-	&::-webkit-scrollbar {
-		height: 8px;
-	}
-	&::-webkit-scrollbar-thumb {
-		background: #63A7CC;
-		border-radius: 4px
-	}
-	.row {
+	padding: 30px;
+	margin: 10px auto 0 auto;
+	display: flex;
+	justify-content: center;
+	.moviecard {
+		background-color: #DADADC;
+		padding: 30px;
+		border-radius: 10px;
 		display: flex;
-		margin: 20px 5px;
+		flex-wrap: wrap;
+		justify-content: center;
+		max-width: 900px;
+		img {
+			margin: 0 auto 30px auto;
+			width: 200px;
+			height: 300px;
+		}
+		.moviedate {
+			margin-top: 20px;
+		}
+		.moviedetails {
+			margin: auto 30px;
+			max-width: 550px;
+			h2 {
+				margin: 0;
+			}
+			.movieoverview {
+				margin-top: 20px;
+			}
+		}
 	}
 }
-.searchbutton {
-	background-color: #254759;
-	border-radius: 20px;
-	color: white;
-	padding: 5px 10px;
-	margin-left: 10px;
+
+.rowwrapper{
+	&:last-of-type {
+		margin-top: 30px;
+	}
+	.rowheader {
+		display: flex;
+	}
+	.scrollmenu {
+		width: 100vw;
+		overflow-x: scroll;
+		flex-wrap: nowrap;
+		background-color: #254759;
+		&::-webkit-scrollbar {
+			height: 8px;
+		}
+		&::-webkit-scrollbar-thumb {
+			background: #63A7CC;
+			border-radius: 4px;
+		}
+		.row {
+			display: flex;
+			margin: 20px 5px;
+		}
+	}
 }
-.textbox {
-	width: 300px;
-	height: 30px;
+
+.searchbodynav {
+	margin-top: 30px;
+	.navbuttons {
+		display: grid;
+		grid-template-columns: 200px auto 200px;
+	}
+	.navbuttoncontainer {
+		margin: auto;
+		&.nextbutton {
+			grid-column-start: 3;
+			grid-column-end: 4;
+		}
+	}
+	.searchbodywrapper {
+		display: flex;
+		.searchbodycards {
+			display: flex;
+			flex-wrap: wrap;
+			margin-top: 30px;
+			justify-content: center;
+			.card {
+				margin-bottom: 30px;
+			}
+		}
+	}
+}
+
+// adjust alignment for viewport less than 930
+@media screen and (max-width: 930px) {
+	.moviecard {
+		width: 500px
+	}
 }

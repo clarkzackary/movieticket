@@ -52,19 +52,21 @@ export default function Home() {
                         Moviegoer <i className="fa fa-ticket" />
                     </h1>
                 </Link>
-                <input
-                    className="textbox"
-                    type="text"
-                    name="name"
-                    placeholder="search for movies, tv shows or people"
-                    onChange={handleFormChange}
-                    value={searchTerm}
-                    onKeyDown={handleSubmit}
-                >
-                </input>
-                <Link to={`/search/${searchTerm}`} className="searchbutton">
-                    Search
-                </Link>
+                <div className="searchform">
+                    <input
+                        className="textbox"
+                        type="text"
+                        name="name"
+                        placeholder="search for movies, tv shows or people"
+                        onChange={handleFormChange}
+                        value={searchTerm}
+                        onKeyDown={handleSubmit}
+                    >
+                    </input>
+                    <Link to={`/search/${searchTerm}`} className="searchbutton">
+                        Search
+                    </Link>
+                </div>
             </div>
                 <Routes>
                     <Route path="/" element={<HomeResultsWrapper movieResults={movieResults} tvResults={tvResults} />} />

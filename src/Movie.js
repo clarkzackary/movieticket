@@ -40,21 +40,27 @@ export default function Movie() {
           let releaseDateFull = "Release Date: "+monthNames[mm]+" "+dd+", "+yy;
         console.log(movieInfo.credits.cast)
         return (
-            <>
-                <img
-                    src={`https://image.tmdb.org/t/p/w300${movieInfo.poster_path}`} 
-                    alt={movieInfo.title || movieInfo.name}
-                />
-                <h2>{movieInfo.title || movieInfo.name}</h2>
-                <div>
-                    {releaseDateFull}
-                </div>
-                <div>
-                    {movieInfo.overview}
-                </div>
+            <div className="moviebody">
+                    <div className="movieinfo">
+                        <div className="moviecard">
+                            <img
+                                src={`https://image.tmdb.org/t/p/w200${movieInfo.poster_path}`} 
+                                alt={movieInfo.title || movieInfo.name}
+                            />
+                            <div className="moviedetails">
+                                <h2>{movieInfo.title || movieInfo.name}</h2>
+                                <div className="moviedate">
+                                    {releaseDateFull}
+                                </div>
+                                <div className="movieoverview">
+                                    {movieInfo.overview}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 <FetchResults results={movieInfo.credits.cast} genre="person" header="Cast"/>
                 <FetchResults results={movieInfo.similar.results} genre={genre} header={`Similar ${genre==="movie"?"Movies":"TV Shows"}`}/>
-            </>
+            </div>
         )
     }
 

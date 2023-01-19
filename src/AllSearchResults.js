@@ -32,13 +32,27 @@ export default function AllSearchResults() {
         })
         if (allSearchResults.page>1) {
             let backNum = Number(pageNum)-1
-            backButton = 
-                <Link to={`/allresults/${genre}/${searchTerm}/${backNum}`}>Back</Link>
+            backButton =
+                <div className="backbutton navbuttoncontainer">
+                    <Link 
+                        to={`/allresults/${genre}/${searchTerm}/${backNum}`}
+                        className="searchbutton"
+                    >
+                        Back
+                    </Link>
+                </div>
         }
         if (allSearchResults.page<allSearchResults.total_pages) {
             let nextNum = Number(pageNum)+1
             nextButton = 
-                <Link to={`/allresults/${genre}/${searchTerm}/${nextNum}`}>Next</Link>
+                <div className="nextbutton navbuttoncontainer">
+                    <Link
+                        to={`/allresults/${genre}/${searchTerm}/${nextNum}`}
+                        className="searchbutton"
+                    >
+                        Next
+                    </Link>
+                </div>
         }
     }
 
@@ -47,9 +61,17 @@ export default function AllSearchResults() {
 
     return (
         <>
-            <h2>Big Search</h2>
-            {backButton}{nextButton}
-            {movieCards}
+            <h2>All Search Results for {searchTerm}</h2>
+            <div className="searchbodynav">
+                <div className="navbuttons">
+                    {backButton}{nextButton}
+                </div>
+                <div className="searchbodywrapper">
+                    <div className="searchbodycards">
+                        {movieCards}
+                    </div>
+                </div>
+            </div>
         </>
     )
 }
