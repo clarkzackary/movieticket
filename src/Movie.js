@@ -8,9 +8,7 @@ export default function Movie() {
     console.log(movieInfo)
     useEffect(() => {
         const fetchMovieData = () => {
-                let fetchurl =
-                  `https://api.themoviedb.org/3/${genre}/${id}?api_key=4f2d813db1c216bca9c8a22d63ad274a&language=en-US&append_to_response=credits,similar`;
-                fetch(fetchurl)
+                fetch(`https://api.themoviedb.org/3/${genre}/${id}?api_key=4f2d813db1c216bca9c8a22d63ad274a&language=en-US&append_to_response=credits,similar`)
                   .then(response => response.json())
                   .then(response => {
                     setMovieInfo(response);

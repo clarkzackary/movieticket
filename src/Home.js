@@ -23,9 +23,7 @@ export default function Home() {
         setTVResults({})
         setMovieResults({})
         setSearchTerm("")
-        const moviesearchurl = 
-            "https://api.themoviedb.org/3/movie/top_rated?api_key=4f2d813db1c216bca9c8a22d63ad274a&language=en-US&include_adult=false&include_video=false&page="
-        setMovieResults(fetch(moviesearchurl)
+        setMovieResults(fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=4f2d813db1c216bca9c8a22d63ad274a&language=en-US&include_adult=false&include_video=false&page=`)
             .then(response => response.json())
             .then((json) => {
                 setMovieResults(json)
@@ -34,9 +32,7 @@ export default function Home() {
                 console.log(error);
             })
         )
-        const tvsearchurl = 
-            "https://api.themoviedb.org/3/tv/top_rated?api_key=4f2d813db1c216bca9c8a22d63ad274a&language=en-US&include_adult=false&include_video=false&page="
-        setTVResults(fetch(tvsearchurl)
+        setTVResults(fetch(`https://api.themoviedb.org/3/tv/top_rated?api_key=4f2d813db1c216bca9c8a22d63ad274a&language=en-US&include_adult=false&include_video=false&page=`)
             .then(response => response.json())
             .then((json) => {
                 setTVResults(json)
@@ -70,6 +66,7 @@ export default function Home() {
                 </div>
             <Routes>
                 <Route path="/" element={<HomeResultsWrapper movieResults={movieResults} tvResults={tvResults} />} />
+                <Route path="/search" element={<HomeResultsWrapper movieResults={movieResults} tvResults={tvResults} />} />
                 <Route path="/search/:searchTerm" element={<SearchResultsWrapper setSearchTerm={setSearchTerm} clearSearch={clearSearch} />} />
                 <Route path="/allresults/:genre/:searchTerm/:pageNum" element={<AllSearchResults />} />
                 <Route path="/:genre/:id" element={<Movie />} />
