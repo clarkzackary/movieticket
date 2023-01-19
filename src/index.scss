@@ -144,11 +144,13 @@ h2 {
 	}
 	.searchbodywrapper {
 		display: flex;
+		justify-content: center;
 		.searchbodycards {
 			display: flex;
 			flex-wrap: wrap;
 			margin-top: 30px;
 			justify-content: center;
+			max-width: 1100px;
 			.card {
 				margin-bottom: 30px;
 			}

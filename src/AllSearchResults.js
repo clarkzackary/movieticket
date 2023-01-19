@@ -66,7 +66,7 @@ export default function AllSearchResults() {
 
     return (
         <>
-            <h2>All Search Results for {searchTerm}</h2>
+            <h2>All search results for: {searchTerm}</h2>
             <div className="searchbodynav">
                 <div className="navbuttons">
                     {backButton}{nextButton}
