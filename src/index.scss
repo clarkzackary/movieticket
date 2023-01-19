@@ -7,38 +7,73 @@ body {
 	width: 100vw;
 	color: #254759
 }
-.row {
-  display: flex;
-}
-.movieposter {
-  	width: 150px;
-	margin-top: 20px;
+a {
+	color: #254759;
+	text-decoration: none;
 }
 .card {
 	width: 200px;
 	min-height: 300px;
 	text-align: center;
-	margin-right: 10px;
 	border: none;
 	align-items: center;
-	height: 100%;
 	border-radius: 10px;
-	background-color: #DADADC
+	background-color: #DADADC;
+	margin: 0 10px;
+	padding: 0 20px;
+
+	.movieposter {
+		width: 150px;
+		margin-top: 20px;
+		margin-bottom: 10px;
+	}
+	.cardtitle {
+		margin-bottom: 5px;
+	}
+}
+.cardlink:hover {
+	background-color: white
+}
+.header {
+	margin-left: 20px;
+	h1 {
+		font-size: 50px;
+		margin: 5px 0 20px 0;
+	}
+}
+.homebutton {
+	height: 100px;
+}
+.rowwrapper {
+	h2 {
+		margin-left: 20px;
+	}
 }
 .scrollmenu {
 	width: 100vw;
 	overflow-x: scroll;
 	flex-wrap: nowrap;
 	background-color: #254759;
+	&::-webkit-scrollbar {
+		height: 8px;
+	}
+	&::-webkit-scrollbar-thumb {
+		background: #63A7CC;
+		border-radius: 4px
+	}
+	.row {
+		display: flex;
+		margin: 20px 5px;
+	}
 }
-
-.scrollmenu::-webkit-scrollbar {
-	height: 8px;
-}
-.scrollmenu::-webkit-scrollbar-thumb {
-	background: #63A7CC;
-	border-radius: 4px
+.searchbutton {
+	background-color: #254759;
+	border-radius: 20px;
+	color: white;
+	padding: 5px 10px;
+	margin-left: 10px;
 }
 .textbox {
-	width: 300px
+	width: 300px;
+	height: 30px;
 }

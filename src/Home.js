@@ -46,9 +46,11 @@ export default function Home() {
     useEffect(() => clearSearch(), [])
     return (
         <>
-            <div>
-                <Link to="" className="searchbutton homebutton">
-                    Home
+            <div className="header">
+                <Link to="" className="homebutton">
+                    <h1>
+                        Moviegoer <i className="fa fa-ticket" />
+                    </h1>
                 </Link>
                 <input
                     className="textbox"
@@ -63,7 +65,7 @@ export default function Home() {
                 <Link to={`/search/${searchTerm}`} className="searchbutton">
                     Search
                 </Link>
-                </div>
+            </div>
             <Routes>
                 <Route path="/" element={<HomeResultsWrapper movieResults={movieResults} tvResults={tvResults} />} />
                 <Route path="/search" element={<HomeResultsWrapper movieResults={movieResults} tvResults={tvResults} />} />

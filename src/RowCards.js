@@ -12,8 +12,9 @@ export default function RowCards({movie, movieurl, genre}) {
                     src={movieurl}
                     className="movieposter"
                 />
-                <br/>
-                {movie.title || movie.name}
+                <div className="cardtitle">
+                    {movie.title || movie.name}
+                </div>
             </Link>
     } else if (genre==="person"){
         titleRef = "original_name"
@@ -29,8 +30,8 @@ export default function RowCards({movie, movieurl, genre}) {
             </div>
     }
     return (
-        <div key={movie.id} className="card">
-                {card}
+        <div key={movie.id} className={`card${genre==="person"?"":" cardlink"}`}>
+            {card}
         </div>
     )
 }
