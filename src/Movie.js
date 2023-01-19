@@ -8,7 +8,9 @@ export default function Movie() {
     console.log(movieInfo)
     useEffect(() => {
         const fetchMovieData = () => {
-                fetch(`https://api.themoviedb.org/3/${genre}/${id}?api_key=4f2d813db1c216bca9c8a22d63ad274a&language=en-US&append_to_response=credits,similar`)
+                let fetchurl =
+                  `https://api.themoviedb.org/3/${genre}/${id}?api_key=4f2d813db1c216bca9c8a22d63ad274a&language=en-US&append_to_response=credits,similar`;
+                fetch(fetchurl)
                   .then(response => response.json())
                   .then(response => {
                     setMovieInfo(response);
@@ -36,11 +38,12 @@ export default function Movie() {
           var mm = date.getMonth();
           var yy = date.getFullYear();
           let releaseDateFull = "Release Date: "+monthNames[mm]+" "+dd+", "+yy;
+        console.log(movieInfo.credits.cast)
         return (
             <>
                 <img
                     src={`https://image.tmdb.org/t/p/w300${movieInfo.poster_path}`} 
-                    alt={`movieInfo.title`}
+                    alt={movieInfo.title || movieInfo.name}
                 />
                 <h2>{movieInfo.title || movieInfo.name}</h2>
                 <div>
@@ -50,7 +53,7 @@ export default function Movie() {
                     {movieInfo.overview}
                 </div>
                 <FetchResults results={movieInfo.credits.cast} genre="person" header="Cast"/>
-                <FetchResults results={movieInfo.similar.results} genre="movie" header="Similar Movies"/>
+                <FetchResults results={movieInfo.similar.results} genre={genre} header={`Similar ${genre==="movie"?"Movies":"TV Shows"}`}/>
             </>
         )
     }

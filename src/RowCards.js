@@ -8,7 +8,7 @@ export default function RowCards({movie, movieurl, genre}) {
        card = 
             <Link to={`/${genre}/${movie.id}`}>
                 <img
-                    alt="movie poster"
+                    alt={movie.name}
                     src={movieurl}
                     className="movieposter"
                 />
@@ -20,7 +20,7 @@ export default function RowCards({movie, movieurl, genre}) {
         card = 
             <Link to={`/${genre}/${movie.id}`}>
                 <img
-                    alt="movie poster"
+                    alt={movie.title}
                     src={movieurl}
                     className="movieposter"
                 />
@@ -32,7 +32,7 @@ export default function RowCards({movie, movieurl, genre}) {
         card =
             <div>
                 <img
-                    alt="movie poster"
+                    alt={movie.original_name}
                     src={movieurl}
                     className="movieposter"
                 />
