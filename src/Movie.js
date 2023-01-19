@@ -5,7 +5,6 @@ export default function Movie() {
     const [movieInfo, setMovieInfo] = useState({})
     const { id } = useParams()
     const { genre } = useParams()
-    console.log(movieInfo)
     useEffect(() => {
         const fetchMovieData = () => {
                 let fetchurl =
@@ -33,12 +32,11 @@ export default function Movie() {
             "November",
             "December"
           ];
-          var date = new Date(movieInfo.release_date || movieInfo.first_air_date);
-          var dd = date.getDate();
-          var mm = date.getMonth();
-          var yy = date.getFullYear();
-          let releaseDateFull = "Release Date: "+monthNames[mm]+" "+dd+", "+yy;
-        console.log(movieInfo.credits.cast)
+        var date = new Date(movieInfo.release_date || movieInfo.first_air_date);
+        var dd = date.getDate();
+        var mm = date.getMonth();
+        var yy = date.getFullYear();
+        let releaseDateFull = "Release Date: "+monthNames[mm]+" "+dd+", "+yy;
         return (
             <div className="moviebody">
                     <div className="movieinfo">

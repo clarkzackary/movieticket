@@ -13,7 +13,10 @@ export default function FetchResults({results, parentType, genre, header}) {
                         <RowCards movie={movie} movieurl={movieurl} genre={genre} key={movie.id} />
                     )
                 } else {
-                    return null;
+                    let movieurl = `/public/empty.png`
+                    return (
+                        <RowCards movie={movie} movieurl={movieurl} genre={genre} key={movie.id} />
+                    )
                 }
             })
         } else {
