@@ -8,7 +8,7 @@ export default function Movie() {
     useEffect(() => {
         const fetchMovieData = () => {
                 let fetchurl =
-                  `https://api.themoviedb.org/3/${genre}/${id}?api_key=4f2d813db1c216bca9c8a22d63ad274a&language=en-US&append_to_response=credits,similar`;
+                  `https://api.themoviedb.org/3/${genre}/${id}?api_key=4f2d813db1c216bca9c8a22d63ad274a&language=en-US&append_to_response=credits,similar,tv_credits`;
                 fetch(fetchurl)
                   .then(response => response.json())
                   .then(response => {
@@ -17,7 +17,8 @@ export default function Movie() {
                   }
                   fetchMovieData()
     }, [id, genre])
-    if (movieInfo.credits) {
+    console.log(movieInfo)
+    if ( (genre==="person" && movieInfo.tv_credits) || (genre !== "person" && movieInfo.credits && movieInfo.similar)) {
         var monthNames = [
             "January",
             "February",
@@ -32,17 +33,35 @@ export default function Movie() {
             "November",
             "December"
           ];
-        var date = new Date(movieInfo.release_date || movieInfo.first_air_date);
+        var date = new Date(movieInfo.release_date || movieInfo.first_air_date || movieInfo.birthday);
         var dd = date.getDate();
         var mm = date.getMonth();
         var yy = date.getFullYear();
-        let releaseDateFull = "Release Date: "+monthNames[mm]+" "+dd+", "+yy;
+        let releaseDateFull = null
+        if (genre !== "person") {
+            releaseDateFull = "Release Date: "+monthNames[mm]+" "+dd+", "+yy;
+        }
+        let fetchRows = null
+        if (genre === "person") {
+            fetchRows = 
+                <>
+                <FetchResults results={movieInfo.credits.cast} genre="movie" header="Movie Roles"/> 
+                <FetchResults results={movieInfo.tv_credits.cast} genre="tv" header="TV Roles"/> 
+                </>
+        } else {
+            fetchRows =
+                <>
+                <FetchResults results={movieInfo.credits.cast} genre="person" header="Cast"/>
+                <FetchResults results={movieInfo.similar.results} genre={genre} header={`Similar ${genre==="movie"?"Movies":"TV Shows"}`}/>
+                </>
+
+        }
         return (
             <div className="moviebody">
                     <div className="movieinfo">
                         <div className="moviecard">
                             <img
-                                src={`https://image.tmdb.org/t/p/w200${movieInfo.poster_path}`} 
+                                src={`https://image.tmdb.org/t/p/w200${movieInfo.poster_path || movieInfo.profile_path}`} 
                                 alt={movieInfo.title || movieInfo.name}
                             />
                             <div className="moviedetails">
@@ -51,13 +70,12 @@ export default function Movie() {
                                     {releaseDateFull}
                                 </div>
                                 <div className="movieoverview">
-                                    {movieInfo.overview}
+                                    {movieInfo.overview || movieInfo.biography}
                                 </div>
                             </div>
                         </div>
                     </div>
-                <FetchResults results={movieInfo.credits.cast} genre="person" header="Cast"/>
-                <FetchResults results={movieInfo.similar.results} genre={genre} header={`Similar ${genre==="movie"?"Movies":"TV Shows"}`}/>
+                    {fetchRows}
             </div>
         )
     }

@@ -6,16 +6,16 @@ export default function FetchResults({results, parentType, genre, header}) {
     var movieCards = null;
     if (results) {
         if (results.length > 0) {
-            movieCards = results.map(movie => {
+            movieCards = results.map((movie,i) => {
                 if (movie.poster_path || movie.profile_path) {
                     let movieurl = `https://image.tmdb.org/t/p/w500${movie.poster_path || movie.profile_path}`
                     return (
-                        <RowCards movie={movie} movieurl={movieurl} genre={genre} key={movie.id} />
+                        <RowCards movie={movie} movieurl={movieurl} genre={genre} key={i + genre + movie.id} />
                     )
                 } else {
                     let movieurl = `/public/empty.png`
                     return (
-                        <RowCards movie={movie} movieurl={movieurl} genre={genre} key={movie.id} />
+                        <RowCards movie={movie} movieurl={movieurl} genre={genre} key={i + genre + movie.id} />
                     )
                 }
             })
