@@ -47,26 +47,26 @@ export default function RowCards({movie, movieurl, genre, favResults, setFavResu
       }
 
     let favButton = <></>
-    if (genre === "movie" && favResults && favResults.items) {
-        console.log(favResults.items)
-        for (let i=0; i < favResults.items.length; i++) {
-            if (favResults.items[i].id === movie.id) {
-                favButton = 
-                    <button
-                        className = "favbutton fav"
-                        onClick={() => removeFavorite(movie.id)}
-                    >
-                        &#9829;
-                    </button>
-                break
-            } else {
-                favButton =
-                    <button
-                        className = "favbutton unfav"
-                        onClick={() => addFavorite(movie.id)}
-                    >
-                        &#9825;
-                    </button>
+    if (genre === "movie") {
+        favButton =
+            <button
+                className = "favbutton unfav"
+                onClick={() => addFavorite(movie.id)}
+            >
+                &#9825;
+            </button>
+        if (favResults && favResults.items) {
+            for (let i=0; i < favResults.items.length; i++) {
+                if (favResults.items[i].id === movie.id) {
+                    favButton = 
+                        <button
+                            className = "favbutton fav"
+                            onClick={() => removeFavorite(movie.id)}
+                        >
+                            &#9829;
+                        </button>
+                    break
+                }
             }
         }
     }

@@ -4,7 +4,6 @@ import AllSearchResults from "./AllSearchResults";
 import HomeResultsWrapper from "./HomeResultsWrapper";
 import Movie from "./Movie";
 import SearchResultsWrapper from "./SearchResultsWrapper";
-import WatchList from "./WatchList";
 
 export default function Home() {
     const [searchTerm, setSearchTerm] = useState("");
@@ -90,7 +89,6 @@ export default function Home() {
                 <Route path="/search/:searchTerm" element={<SearchResultsWrapper setSearchTerm={setSearchTerm} clearSearch={clearSearch} favResults={favResults} setFavResults={setFavResults}/>} />
                 <Route path="/allresults/:genre/:searchTerm/:pageNum" element={<AllSearchResults favResults={favResults} setFavResults={setFavResults}/>} />
                 <Route path="/:genre/:id" element={<Movie setFavResults={setFavResults}/>} />
-                <Route path="watchlist" element={<WatchList />} />
             </Routes>
         </>
     );
