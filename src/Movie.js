@@ -59,7 +59,7 @@ export default function Movie() {
         return (
             <div className="moviebody">
                     <div className="movieinfo">
-                        <div className="moviecard">
+                        <div className={`moviecard${genre==="person"?" personcard":""}`}>
                             <img
                                 src={`https://image.tmdb.org/t/p/w200${movieInfo.poster_path || movieInfo.profile_path}`} 
                                 alt={movieInfo.title || movieInfo.name}
