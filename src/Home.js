@@ -88,7 +88,7 @@ export default function Home() {
                 <Route path="/search" element={<HomeResultsWrapper movieResults={movieResults} tvResults={tvResults} favResults={favResults} setFavResults={setFavResults}/>} />
                 <Route path="/search/:searchTerm" element={<SearchResultsWrapper setSearchTerm={setSearchTerm} clearSearch={clearSearch} favResults={favResults} setFavResults={setFavResults}/>} />
                 <Route path="/allresults/:genre/:searchTerm/:pageNum" element={<AllSearchResults favResults={favResults} setFavResults={setFavResults}/>} />
-                <Route path="/:genre/:id" element={<Movie setFavResults={setFavResults}/>} />
+                <Route path="/:genre/:id" element={<Movie favResults={favResults} setFavResults={setFavResults}/>} />
             </Routes>
         </>
     );

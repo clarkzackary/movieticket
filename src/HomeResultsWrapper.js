@@ -1,7 +1,6 @@
 import FetchResults from "./FetchResults";
 
 export default function HomeResultsWrapper({movieResults, tvResults, favResults, setFavResults}) {
-    console.log(favResults)
     let favRow = <></>
     if (favResults.items && favResults.items.length > 0) {
         favRow =

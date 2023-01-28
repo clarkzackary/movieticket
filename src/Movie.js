@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import FavoriteButton from "./Favorite Button";
 import FetchResults from "./FetchResults";
 
-export default function Movie(setFavResults) {
+export default function Movie({favResults, setFavResults}) {
     const [movieInfo, setMovieInfo] = useState({})
     const { id } = useParams()
     const { genre } = useParams()
@@ -65,7 +66,12 @@ export default function Movie(setFavResults) {
                                 alt={movieInfo.title || movieInfo.name}
                             />
                             <div className="moviedetails">
-                                <h2>{movieInfo.title || movieInfo.name}</h2>
+                                <h2>
+                                    <div>
+                                        {movieInfo.title || movieInfo.name}
+                                    </div>
+                                    <FavoriteButton movie={movieInfo} favResults={favResults} setFavResults={setFavResults} genre={genre} />
+                                </h2>
                                 <div className="moviedate">
                                     {releaseDateFull}
                                 </div>

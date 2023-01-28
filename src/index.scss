@@ -50,20 +50,22 @@ h2 {
 		.titlelink {
 			width: 122px;
 		}
-		.favbutton {
-			border: none;
-			background-color: transparent;
-			display: flex;
-			&.fav {
-				color: red
-			}
-			&.unfav {
-				color: grey
-			}
-		}
+
 	}
 	&.cardlink:hover {
 		background-color: white;
+	}
+}
+
+.favbutton {
+	border: none;
+	background-color: transparent;
+	display: flex;
+	&.fav {
+		color: red
+	}
+	&.unfav {
+		color: grey
 	}
 }
 
@@ -118,6 +120,10 @@ h2 {
 			max-width: 550px;
 			h2 {
 				margin: 0;
+				display: flex;
+				div {
+					width: 404px;
+				}
 			}
 			.movieoverview {
 				margin-top: 20px;
