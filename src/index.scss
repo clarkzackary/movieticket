@@ -45,6 +45,22 @@ h2 {
 	.cardtitle {
 		margin: 0 0 10px 0;
 		width: 150px;
+		display: flex;
+		justify-content: center;
+		.titlelink {
+			width: 122px;
+		}
+		.favbutton {
+			border: none;
+			background-color: transparent;
+			display: flex;
+			&.fav {
+				color: red
+			}
+			&.unfav {
+				color: grey
+			}
+		}
 	}
 	&.cardlink:hover {
 		background-color: white;

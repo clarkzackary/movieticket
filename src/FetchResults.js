@@ -1,7 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import RowCards from "./RowCards";
 
-export default function FetchResults({results, parentType, genre, header}) {
+export default function FetchResults({results, parentType, genre, header, favResults, setFavResults}) {
     const {searchTerm} = useParams()
     var movieCards = null;
     if (results) {
@@ -14,7 +14,7 @@ export default function FetchResults({results, parentType, genre, header}) {
                     movieurl = `/images/empty.png`
                 }
                 return (
-                    <RowCards movie={movie} movieurl={movieurl} genre={genre} key={i + genre + movie.id} />
+                    <RowCards movie={movie} movieurl={movieurl} genre={genre} key={i + genre + movie.id} favResults={favResults} setFavResults={setFavResults} />
                 )
             })
         } else {

@@ -4,11 +4,13 @@ import AllSearchResults from "./AllSearchResults";
 import HomeResultsWrapper from "./HomeResultsWrapper";
 import Movie from "./Movie";
 import SearchResultsWrapper from "./SearchResultsWrapper";
+import WatchList from "./WatchList";
 
 export default function Home() {
     const [searchTerm, setSearchTerm] = useState("");
     const [movieResults, setMovieResults] = useState({});
     const [tvResults, setTVResults] = useState({});
+    const [favResults, setFavResults] = useState({});
     const navigate = useNavigate()
     const handleFormChange = (event) => {
         setSearchTerm(event.target.value);
@@ -42,8 +44,22 @@ export default function Home() {
             })
         )
     }
+    const fetchFavResults = () => {
+        setFavResults({})
+        setFavResults(fetch(`https://api.themoviedb.org/3/list/32914?api_key=4f2d813db1c216bca9c8a22d63ad274a&language=en-US&include_adult=false`)
+            .then(response => response.json())
+            .then((json) => {
+                setFavResults(json)
+            })
+            .catch(function(error) {
+                console.log(error);
+            })
+        )
+    }
 
     useEffect(() => clearSearch(), [])
+    useEffect(() => fetchFavResults(), [])
+    
     return (
         <>
             <div className="header">
@@ -68,13 +84,14 @@ export default function Home() {
                     </Link>
                 </div>
             </div>
-                <Routes>
-                    <Route path="/" element={<HomeResultsWrapper movieResults={movieResults} tvResults={tvResults} />} />
-                    <Route path="/search" element={<HomeResultsWrapper movieResults={movieResults} tvResults={tvResults} />} />
-                    <Route path="/search/:searchTerm" element={<SearchResultsWrapper setSearchTerm={setSearchTerm} clearSearch={clearSearch} />} />
-                    <Route path="/allresults/:genre/:searchTerm/:pageNum" element={<AllSearchResults />} />
-                    <Route path="/:genre/:id" element={<Movie />} />
-                </Routes>
+            <Routes>
+                <Route path="/" element={<HomeResultsWrapper movieResults={movieResults} tvResults={tvResults} favResults={favResults} setFavResults={setFavResults}/>} />
+                <Route path="/search" element={<HomeResultsWrapper movieResults={movieResults} tvResults={tvResults} favResults={favResults} setFavResults={setFavResults}/>} />
+                <Route path="/search/:searchTerm" element={<SearchResultsWrapper setSearchTerm={setSearchTerm} clearSearch={clearSearch} favResults={favResults} setFavResults={setFavResults}/>} />
+                <Route path="/allresults/:genre/:searchTerm/:pageNum" element={<AllSearchResults favResults={favResults} setFavResults={setFavResults}/>} />
+                <Route path="/:genre/:id" element={<Movie setFavResults={setFavResults}/>} />
+                <Route path="watchlist" element={<WatchList />} />
+            </Routes>
         </>
     );
 }

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import RowCards from "./RowCards";
 
-export default function AllSearchResults() {
+export default function AllSearchResults(favResults, setFavResults) {
     const [allSearchResults, setAllSearchResults] = useState({});
     const {searchTerm} = useParams()
     const {genre} = useParams()
@@ -24,16 +24,13 @@ export default function AllSearchResults() {
     
     if (allSearchResults.results) {
         movieCards = allSearchResults.results.map(movie => {
+            let movieurl = `/images/empty.png`
             if (movie.poster_path || movie.profile_path) {
-                return(
-                    <RowCards movie={movie} movieurl={`https://image.tmdb.org/t/p/w500${movie.poster_path || movie.profile_path}`} genre={genre} key={movie.id} />
-                )
-            } else {
-                let movieurl = `/images/empty.png`
-                return (
-                    <RowCards movie={movie} movieurl={movieurl} genre={genre} key={movie.id} />
-                )
+                movieurl=`https://image.tmdb.org/t/p/w500${movie.poster_path || movie.profile_path}`
             }
+            return (
+                <RowCards movie={movie} movieurl={movieurl} genre={genre} key={movie.id} />
+            )
         })
         if (allSearchResults.page>1) {
             let backNum = Number(pageNum)-1

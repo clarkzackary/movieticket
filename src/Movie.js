@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import FetchResults from "./FetchResults";
-export default function Movie() {
+
+export default function Movie(setFavResults) {
     const [movieInfo, setMovieInfo] = useState({})
     const { id } = useParams()
     const { genre } = useParams()
@@ -17,7 +18,6 @@ export default function Movie() {
                   }
                   fetchMovieData()
     }, [id, genre])
-    console.log(movieInfo)
     if ( (genre==="person" && movieInfo.tv_credits) || (genre !== "person" && movieInfo.credits && movieInfo.similar)) {
         var monthNames = [
             "January",

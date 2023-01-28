@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import SearchResults from "./SearchResults";
+import FetchResults from "./FetchResults";
 
-export default function SearchResultsWrapper({setSearchTerm, clearSearch}) {
+export default function SearchResultsWrapper({setSearchTerm, clearSearch, favResults, setFavResults}) {
     const [movieResults, setMovieResults] = useState({});
     const [tvResults, setTVResults] = useState({});
+    const [personResults, setPersonResults] = useState({});
     const [searchHeader, setSearchHeader] = useState("")
     const {searchTerm} = useParams()
     const submitSearch = () => {
@@ -29,6 +30,15 @@ export default function SearchResultsWrapper({setSearchTerm, clearSearch}) {
                 console.log(error);
             })
         )
+        setPersonResults(fetch(`https://api.themoviedb.org/3/search/person?api_key=4f2d813db1c216bca9c8a22d63ad274a&language=en-US&query=${searchTerm}&include_adult=false`)
+            .then(response => response.json())
+            .then((json) => {
+                setPersonResults(json)
+            })
+            .catch(function(error) {
+                console.log(error);
+            })
+        )
         setSearchHeader(searchTerm)
         setSearchTerm("")
     }
@@ -38,7 +48,9 @@ export default function SearchResultsWrapper({setSearchTerm, clearSearch}) {
     return (
         <>
             <h2>Search Results for: {searchHeader}</h2>
-            <SearchResults movieResults={movieResults} tvResults={tvResults} parentType="search" />
+            <FetchResults results={movieResults.results} parentType="search" genre="movie" header="Movies" favResults={favResults} setFavResults={setFavResults}/>
+            <FetchResults results={tvResults.results} parentType="search" genre="tv" header="TV Shows" favResults={favResults} setFavResults={setFavResults}/>
+            <FetchResults results={personResults.results} parentType="search" genre="person" header="People" favResults={favResults} setFavResults={setFavResults}/>
         </>
     )
 }
