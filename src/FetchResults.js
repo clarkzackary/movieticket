@@ -13,7 +13,7 @@ export default function FetchResults({results, parentType, genre, header}) {
                         <RowCards movie={movie} movieurl={movieurl} genre={genre} key={i + genre + movie.id} />
                     )
                 } else {
-                    let movieurl = `/public/empty.png`
+                    let movieurl = `/images/empty.png`
                     return (
                         <RowCards movie={movie} movieurl={movieurl} genre={genre} key={i + genre + movie.id} />
                     )
