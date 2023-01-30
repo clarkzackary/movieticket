@@ -8,9 +8,9 @@ export default function HomeResultsWrapper({movieResults, tvResults, favResults,
     }
     return (
         <>  
-            {favRow}
             <FetchResults results={movieResults.results} parentType="home" genre="movie" header="Top Rated Movies" favResults={favResults} setFavResults={setFavResults}/>
             <FetchResults results={tvResults.results} parentType="home" genre="tv" header="Top Rated TV Shows" favResults={favResults} setFavResults={setFavResults}/>
+            {favRow}
         </>
     )
 }
