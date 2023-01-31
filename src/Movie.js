@@ -46,14 +46,14 @@ export default function Movie({favResults, setFavResults}) {
         if (genre === "person") {
             fetchRows = 
                 <>
-                <FetchResults results={movieInfo.credits.cast} genre="movie" header="Movie Roles"/> 
-                <FetchResults results={movieInfo.tv_credits.cast} genre="tv" header="TV Roles"/> 
+                <FetchResults results={movieInfo.credits.cast} parentType="home" genre="movie" header="Movie Roles" favResults={favResults} setFavResults={setFavResults}/> 
+                <FetchResults results={movieInfo.tv_credits.cast} parentType="home" genre="tv" header="TV Roles" favResults={favResults} setFavResults={setFavResults}/> 
                 </>
         } else {
             fetchRows =
                 <>
-                <FetchResults results={movieInfo.credits.cast} genre="person" header="Cast"/>
-                <FetchResults results={movieInfo.similar.results} genre={genre} header={`Similar ${genre==="movie"?"Movies":"TV Shows"}`}/>
+                <FetchResults results={movieInfo.credits.cast} parentType="home" genre="person" header="Cast" favResults={favResults} setFavResults={setFavResults}/>
+                <FetchResults results={movieInfo.similar.results} parentType="home" genre={genre} header={`Similar ${genre==="movie"?"Movies":"TV Shows"}`} favResults={favResults} setFavResults={setFavResults}/>
                 </>
 
         }
